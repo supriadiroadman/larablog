@@ -47,7 +47,6 @@
                     </div>
                 </form>
 
-
                 <a href="{{ route('categories.create') }}" class="btn btn-sm btn-primary">Create</a>
             </div>
         </div>
@@ -70,10 +69,13 @@
                             <div class="d-flex">
                                 <a href="{{ route('categories.edit', $category) }}"
                                     class="btn btn-sm btn-primary mr-1">Edit</a>
-                                <form action="{{ route('categories.destroy', $category) }}" method="post">
+                                {{-- Fungsi confirm delete berada di _sweetalert2 folder partials --}}
+                                <form action="{{ route('categories.destroy', $category) }}" method="post"
+                                    id="form-delete">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    <button class="btn btn-sm btn-danger" id="delete"
+                                        data-name="{{$category->name}}">Delete</button>
                                 </form>
                             </div>
                         </td>
@@ -88,4 +90,5 @@
         @endisset
     </div>
 </div>
+
 @endsection

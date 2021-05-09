@@ -37,7 +37,7 @@ class CategoryController extends Controller
         $validatedData['slug'] = $validatedData['name'];
 
         Category::create($validatedData);
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', "{$validatedData['name']} created!");
     }
 
 
@@ -61,13 +61,13 @@ class CategoryController extends Controller
         $validatedData['slug'] = $validatedData['name'];
         $category->update($validatedData);
 
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', "{$validatedData['name']} updated!");
     }
 
 
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', "{$category->name} deleted!");
     }
 }

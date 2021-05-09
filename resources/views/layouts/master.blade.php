@@ -107,6 +107,11 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 
+    <!-- Sweetalert2-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @include('layouts.partials._sweetalert2')
+
+    @stack('scripts')
 </body>
 
 </html>
