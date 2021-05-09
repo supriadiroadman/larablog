@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Categories')
+@section('title', 'Tags')
 
 @section('mobileSearch')
 <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -27,11 +27,11 @@
 
 @section('content')
 
-@if($categories->count())
+@if($tags->count())
 <div class="row">
     <div class="col-md-8">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h1 class="h3 text-gray-800 d-inline-flex">Categories</h1>
+            <h1 class="h3 text-gray-800 d-inline-flex">Tags</h1>
             <div>
                 <!-- Topbar Search -->
                 <form action="" method="GET"
@@ -47,7 +47,7 @@
                     </div>
                 </form>
 
-                <a href="{{ route('categories.create') }}" class="btn btn-sm btn-primary">Create</a>
+                <a href="{{ route('tags.create') }}" class="btn btn-sm btn-primary">Create</a>
             </div>
         </div>
 
@@ -61,17 +61,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($tags as $category)
                     <tr>
-                        <td>{{$loop->index + $categories->firstItem() }}</td>
+                        <td>{{$loop->index + $tags->firstItem() }}</td>
                         <td>{{ $category->name }}</td>
                         <td>
                             <div class="d-flex">
-                                <a href="{{ route('categories.edit', $category) }}"
+                                <a href="{{ route('tags.edit', $category) }}"
                                     class="btn btn-sm btn-primary mr-1">Edit</a>
                                 {{-- Fungsi confirm delete berada di _sweetalert2 folder partials --}}
-                                <form action="{{ route('categories.destroy', $category) }}" method="post"
-                                    id="form-delete">
+                                <form action="{{ route('tags.destroy', $category) }}" method="post" id="form-delete">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-sm btn-danger" id="delete"
@@ -84,7 +83,7 @@
                 </tbody>
             </table>
         </div>
-        {{ $categories->links() }}
+        {{ $tags->links() }}
     </div>
 </div>
 @else

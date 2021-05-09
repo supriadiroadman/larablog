@@ -35,12 +35,12 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item {{ isActiveRoute('categories*') }}">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-            aria-controls="collapseTwo">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+            aria-controls="collapseOne">
             <i class="fas fa-fw fa-cog"></i>
             <span>Categories</span>
         </a>
-        <div id="collapseTwo" class="collapse {{isActiveRoute('categories*', 'show') }}" aria-labelledby="headingTwo"
+        <div id="collapseOne" class="collapse {{isActiveRoute('categories*', 'show') }}" aria-labelledby="headingTwo"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu Categories:</h6>
@@ -53,17 +53,18 @@
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
+    <li class="nav-item {{ isActiveRoute('tags*') }}">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+            aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
             <span>Tags</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse {{isActiveRoute('tags*', 'show') }}" aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu Tags:</h6>
-                <a class="collapse-item" href="utilities-color.html">Index</a>
-                <a class="collapse-item" href="utilities-border.html">Create</a>
+                <a class="collapse-item {{isActiveRoute('tags.index')}}" href="{{ route('tags.index') }}">Index</a>
+                <a class="collapse-item {{isActiveRoute('tags.create')}}" href="{{ route('tags.create') }}">Create</a>
             </div>
         </div>
     </li>
