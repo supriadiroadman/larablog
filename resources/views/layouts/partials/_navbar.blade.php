@@ -7,7 +7,10 @@
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
+
         <div class="topbar-divider d-none d-sm-block"></div>
+
+        @yield('mobileSearch')
 
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">

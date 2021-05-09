@@ -26,18 +26,28 @@
         Interface
     </div>
 
+    @php
+    function isActiveRoute($route, $output = 'active')
+    {
+    return request()->routeIs($route) ? $output : '';
+    }
+    @endphp
+
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+    <li class="nav-item {{ isActiveRoute('categories*') }}">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
             aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
             <span>Categories</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse {{isActiveRoute('categories*', 'show') }}" aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu Categories:</h6>
-                <a class="collapse-item" href="buttons.html">Index</a>
-                <a class="collapse-item" href="cards.html">Create</a>
+                <a class="collapse-item {{isActiveRoute('categories.index')}}"
+                    href="{{ route('categories.index') }}">Index</a>
+                <a class="collapse-item {{isActiveRoute('categories.create')}}"
+                    href="{{ route('categories.create') }}">Create</a>
             </div>
         </div>
     </li>

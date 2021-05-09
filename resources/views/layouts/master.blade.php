@@ -9,7 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Blank</title>
+    {{-- <title>SB Admin 2 - Blank</title> --}}
+    <title>@yield('title')</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -46,6 +47,7 @@
 
                     <!-- Page Heading -->
                     {{-- <h1 class="h3 mb-4 text-gray-800">Blank Page</h1> --}}
+
                     @yield('content')
 
                 </div>
