@@ -43,8 +43,10 @@
                     @endif
 
                     <div class="form-group">
-                        <label for="image">Image</label>
-                        <input id="image" class="form-control-file" type="file" name="image">
+                        <div class="custom-file">
+                            <label for="customFile" class="custom-file-label">Image</label>
+                            <input id="customFile" class="custom-file-input" type="file" name="image">
+                        </div>
 
                         @include('layouts.partials._error', [
                         'name' => 'image'
@@ -53,7 +55,8 @@
 
                     <div class="form-group">
                         <label for="category_id">Category</label>
-                        <select id="my-category_id" class="form-control" name="category_id">
+                        <select id="category_id" class="js-select2-single form-control" name="category_id">
+                            <option value=""></option>
                             @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
                                 {{ ( old('category_id') ?? $post->category_id) == $category->id ? 'selected':'' }}>
@@ -63,13 +66,13 @@
                         </select>
 
                         @include('layouts.partials._error', [
-                        'name' => 'image'
+                        'name' => 'category_id'
                         ])
                     </div>
 
                     <div class="form-group">
                         <label for="tag_id">Tags</label>
-                        <select id="tag_id" class="form-control" name="tag_id[]" multiple>
+                        <select id="tag_id" class="js-select2-multiple form-control" name="tag_id[]" multiple>
                             @foreach ($tags as $tag)
                             <option value="{{ $tag->id }}"
                                 {{ in_array($tag->id, old('tag_id', $post->tags->pluck('id')->toArray())) ? 'selected' : '' }}>
@@ -79,7 +82,7 @@
                         </select>
 
                         @include('layouts.partials._error', [
-                        'name' => 'image'
+                        'name' => 'tag_id'
                         ])
                     </div>
 
@@ -91,3 +94,32 @@
 </div>
 
 @endsection
+
+@push('styles')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endpush
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Select2
+        $('.js-select2-single').select2({
+         placeholder: 'Select an category',
+         theme: "classic"
+        });
+
+        $('.js-select2-multiple').select2({
+            placeholder: 'Select an tag',
+            theme: "classic"
+        });
+
+
+        // Show name image after selected
+        $('input[type="file"]').change(function(e){
+            var fileName = e.target.files[0].name;
+            $('.custom-file-label').html(fileName);
+         });
+});
+</script>
+@endpush
