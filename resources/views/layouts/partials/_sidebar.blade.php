@@ -69,18 +69,18 @@
         </div>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2"
-            aria-expanded="true" aria-controls="collapseUtilities2">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Posts</span>
+    <li class="nav-item {{ isActiveRoute('posts*') }}">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true"
+            aria-controls="collapseThree">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Post</span>
         </a>
-        <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities"
+        <div id="collapseThree" class="collapse {{isActiveRoute('posts*', 'show') }}" aria-labelledby="headingTwo"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu Posts:</h6>
-                <a class="collapse-item" href="utilities-color.html">Index</a>
-                <a class="collapse-item" href="utilities-border.html">Create</a>
+                <a class="collapse-item {{isActiveRoute('posts.index')}}" href="{{ route('posts.index') }}">Index</a>
+                <a class="collapse-item {{isActiveRoute('posts.create')}}" href="{{ route('posts.create') }}">Create</a>
             </div>
         </div>
     </li>
