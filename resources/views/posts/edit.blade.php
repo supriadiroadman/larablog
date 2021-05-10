@@ -34,11 +34,13 @@
                         ])
                     </div>
 
+                    @if ($post->image)
                     <div class="form-group">
                         <label>Current Image</label>
                         <img src="{{ asset('storage/posts/'.$post->image) }}" style="max-height: 100px" alt=""
                             class="img-thumbnail d-block">
                     </div>
+                    @endif
 
                     <div class="form-group">
                         <label for="image">Image</label>
@@ -56,6 +58,22 @@
                             <option value="{{ $category->id }}"
                                 {{ ( old('category_id') ?? $post->category_id) == $category->id ? 'selected':'' }}>
                                 {{ $category->name }}
+                            </option>
+                            @endforeach
+                        </select>
+
+                        @include('layouts.partials._error', [
+                        'name' => 'image'
+                        ])
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tag_id">Tags</label>
+                        <select id="tag_id" class="form-control" name="tag_id[]" multiple>
+                            @foreach ($tags as $tag)
+                            <option value="{{ $tag->id }}"
+                                {{ in_array($tag->id, old('tag_id', $post->tags->pluck('id')->toArray())) ? 'selected' : '' }}>
+                                {{ $tag->name }}
                             </option>
                             @endforeach
                         </select>

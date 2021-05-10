@@ -21,8 +21,8 @@
                         @include('layouts.partials._error', [
                         'name' => 'title'
                         ])
-
                     </div>
+
                     <div class="form-group">
                         <label for="content">Content</label>
                         <textarea id="content" class="form-control @error('content') is-invalid @enderror"
@@ -31,8 +31,8 @@
                         @include('layouts.partials._error', [
                         'name' => 'content'
                         ])
-
                     </div>
+
                     <div class="form-group">
                         <label for="image">Image</label>
                         <input id="image" class="form-control-file" type="file" name="image">
@@ -40,7 +40,6 @@
                         @include('layouts.partials._error', [
                         'name' => 'image'
                         ])
-
                     </div>
 
                     <div class="form-group">
@@ -57,8 +56,24 @@
                         @include('layouts.partials._error', [
                         'name' => 'image'
                         ])
-
                     </div>
+
+                    <div class="form-group">
+                        <label for="tag_id">Tags</label>
+                        <select id="tag_id" class="form-control" name="tag_id[]" multiple>
+                            @foreach ($tags as $tag)
+                            <option value="{{ $tag->id }}"
+                                {{ (old('tag_id') != null && in_array($tag->id, old('tag_id'))) ? 'selected' : ''}}>
+                                {{ $tag->name }}
+                            </option>
+                            @endforeach
+                        </select>
+
+                        @include('layouts.partials._error', [
+                        'name' => 'image'
+                        ])
+                    </div>
+
                     <button type="submit" class="btn btn-sm btn-primary">Save</button>
                 </form>
             </div>

@@ -21,4 +21,9 @@ class Tag extends Model
     {
         $this->attributes['slug'] = Str::slug($value);
     }
+
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
 }

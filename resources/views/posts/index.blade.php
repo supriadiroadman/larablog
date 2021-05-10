@@ -59,6 +59,7 @@
                         <th>Title</th>
                         <th>Content</th>
                         <th>Category</th>
+                        <th>Tags</th>
                         <th>Image</th>
                         <th>Action</th>
                     </tr>
@@ -70,6 +71,11 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->content }}</td>
                         <td>{{ $post->category->name }}</td>
+                        <td>
+                            @foreach ($post->tags as $tag)
+                            <span class="badge badge-primary">{{ $tag->name }}</span>
+                            @endforeach
+                        </td>
                         <td>
                             @if ($post->image)
                             <img src="{{ asset('storage/posts/'.$post->image) }}" alt="" class="img-thumbnail"

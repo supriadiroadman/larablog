@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -16,9 +17,9 @@ class PostController extends Controller
         $keyword = $request->keyword;
 
         if ($keyword) {
-            $posts = Post::where('title', 'LIKE', "%{$keyword}%")->orWhere('content', 'LIKE', "%{$keyword}%")->with('category')->paginate(10)->withQueryString();
+            $posts = Post::where('title', 'LIKE', "%{$keyword}%")->orWhere('content', 'LIKE', "%{$keyword}%")->with('category', 'tags')->paginate(10)->withQueryString();
         } else {
-            $posts = Post::with('category')->paginate(10);
+            $posts = Post::with('category', 'tags')->paginate(10);
         }
         // $posts->appends(['keyword' => $keyword]); // Cara ke 1 selain withQueryString()
         return view('posts.index', compact('posts'));
@@ -28,7 +29,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('posts.create', compact('categories'));
+        $tags = Tag::all();
+        return view('posts.create', compact('categories', 'tags'));
     }
 
 
@@ -65,7 +67,8 @@ class PostController extends Controller
         $validatedData['slug'] = $request->title;
         $validatedData['user_id'] = auth()->user()->id;
 
-        Post::create($validatedData);
+        $post = Post::create($validatedData);
+        $post->tags()->attach($request->tag_id);
 
         return redirect()->route('posts.index')->with('success', "Berhasil Menambah Post " .
             substr($request->title, 0, 20) . " ...");
@@ -81,7 +84,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view('posts.edit', compact('post', 'categories'));
+        $tags = Tag::all();
+        return view('posts.edit', compact('post', 'categories', 'tags'));
     }
 
 
@@ -123,6 +127,7 @@ class PostController extends Controller
         $validatedData['slug'] = $request->title;
         $validatedData['user_id'] = auth()->user()->id;
 
+        $post->tags()->sync($request->tag_id);
         $post->update($validatedData);
 
         return redirect()->route('posts.index')->with('success', "Berhasil Mengupdate Post " .
@@ -137,6 +142,7 @@ class PostController extends Controller
             @unlink($image_path);
         }
 
+        $post->tags()->detach();
         $post->delete();
         return redirect()->route('posts.index')->with('success', "Berhasil Menghapus Post " .
             substr(request()->title, 0, 20) . " ...");

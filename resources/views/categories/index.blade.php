@@ -57,6 +57,7 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <th>Post Count</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -65,6 +66,7 @@
                     <tr>
                         <td>{{$loop->index + $categories->firstItem() }}</td>
                         <td>{{ $category->name }}</td>
+                        <td>{{ $category->posts->count() }}</td>
                         <td>
                             <div class="d-flex">
                                 <a href="{{ route('categories.edit', $category) }}"

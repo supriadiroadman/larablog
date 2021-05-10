@@ -12,9 +12,9 @@ class TagController extends Controller
         $keyword = $request->keyword;
 
         if ($keyword) {
-            $tags = Tag::where('name', 'LIKE', "%{$keyword}%")->paginate(10)->withQueryString();
+            $tags = Tag::with('posts')->where('name', 'LIKE', "%{$keyword}%")->paginate(10)->withQueryString();
         } else {
-            $tags = Tag::paginate(10);
+            $tags = Tag::with('posts')->paginate(10);
         }
         // $tags->appends(['keyword' => $keyword]); // Cara ke 1 selain withQueryString()
         return view('tags.index', compact('tags'));
@@ -66,6 +66,10 @@ class TagController extends Controller
 
     public function destroy(Tag $tag)
     {
+        if ($tag->count() > 0) {
+            return redirect()->back()->with('error', "Tag {$tag->name} digunakan oleh post");
+        }
+
         $tag->delete();
         return redirect()->route('tags.index')->with('success', "{$tag->name} deleted!");
     }

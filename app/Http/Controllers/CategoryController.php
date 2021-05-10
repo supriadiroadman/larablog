@@ -13,9 +13,9 @@ class CategoryController extends Controller
         $keyword = $request->keyword;
 
         if ($keyword) {
-            $categories = Category::where('name', 'LIKE', "%{$keyword}%")->paginate(2)->withQueryString();
+            $categories = Category::with('posts')->where('name', 'LIKE', "%{$keyword}%")->paginate(2)->withQueryString();
         } else {
-            $categories = Category::paginate(10);
+            $categories = Category::with('posts')->paginate(10);
         }
         // $categories->appends(['keyword' => $keyword]); // Cara ke 1 selain withQueryString()
         return view('categories.index', compact('categories'));
@@ -67,6 +67,10 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
+        if ($category->count() > 0) {
+            return redirect()->back()->with('error', "Kategori {$category->name} digunakan oleh post");
+        }
+
         $category->delete();
         return redirect()->route('categories.index')->with('success', "{$category->name} deleted!");
     }
