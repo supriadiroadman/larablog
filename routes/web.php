@@ -31,10 +31,19 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Admin
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resources([
         'categories' => CategoryController::class,
         'tags' => TagController::class,
-        'posts' => PostController::class,
+        // 'posts' => PostController::class,
     ]);
+    // Bila ingin menggunakan slug tanpa merubah id menjadi slug di model 
+    Route::resource('posts', PostController::class)->except(['edit', 'show']);
+    Route::get('/posts/{post:slug}/edit', [PostController::class, 'edit'])->name('posts.edit');
+});
+
+// Filemanager
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
 });
