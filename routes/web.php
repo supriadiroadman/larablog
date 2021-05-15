@@ -17,12 +17,6 @@ use Intervention\Image\ImageManagerStatic as Image;
 |
 */
 
-Route::get('/tes', function () {
-    $img = Image::make('foo.jpg')->resize(200, 200)->save('bar.jpg');
-
-    return $img->response('jpg');
-});
-
 Route::get('/', function () {
     return view('layouts.master');
 });
@@ -39,7 +33,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         // 'posts' => PostController::class,
     ]);
     // Bila ingin menggunakan slug tanpa merubah id menjadi slug di model 
-    Route::resource('posts', PostController::class)->except(['edit', 'show']);
+    Route::resource('posts', PostController::class)->except(['edit']);
     Route::get('/posts/{post:slug}/edit', [PostController::class, 'edit'])->name('posts.edit');
 });
 

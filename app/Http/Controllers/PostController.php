@@ -17,9 +17,9 @@ class PostController extends Controller
         $keyword = $request->keyword;
 
         if ($keyword) {
-            $posts = Post::where('title', 'LIKE', "%{$keyword}%")->orWhere('content', 'LIKE', "%{$keyword}%")->with('category', 'tags')->paginate(10)->withQueryString();
+            $posts = Post::where('title', 'LIKE', "%{$keyword}%")->orWhere('content', 'LIKE', "%{$keyword}%")->with('category', 'tags', 'user')->paginate(10)->withQueryString();
         } else {
-            $posts = Post::with('category', 'tags')->paginate(10);
+            $posts = Post::with('category', 'tags', 'user')->paginate(10);
         }
         // $posts->appends(['keyword' => $keyword]); // Cara ke 1 selain withQueryString()
         return view('posts.index', compact('posts'));
@@ -77,7 +77,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        //
+        return view('posts.show', compact('post'));
     }
 
 

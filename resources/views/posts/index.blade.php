@@ -57,7 +57,7 @@
                     <tr>
                         <th>#</th>
                         <th>Title</th>
-                        <th>Content</th>
+                        <th>Author</th>
                         <th>Category</th>
                         <th>Tags</th>
                         <th>Image</th>
@@ -68,8 +68,10 @@
                     @foreach ($posts as $post)
                     <tr>
                         <td>{{$loop->index + $posts->firstItem() }}</td>
-                        <td>{{ $post->title }}</td>
-                        <td>{{ $post->content }}</td>
+                        <td>
+                            <a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a>
+                        </td>
+                        <td>{{ $post->user->name }}</td>
                         <td>{{ $post->category->name }}</td>
                         <td>
                             @foreach ($post->tags as $tag)
@@ -79,7 +81,7 @@
                         <td>
                             @if ($post->image)
                             <img src="{{ asset('storage/posts/'.$post->image) }}" alt="" class="img-thumbnail"
-                                style="min-width: 100px; width: 100px">
+                                style="min-width: 100px; max-width:100px; max-height: 66px; object-fit:cover;object-position: center">
                             @else
                             <img src="https://via.placeholder.com/100x66" alt="" class="img-thumbnail"
                                 style="min-width: 100px; width: 100px">
@@ -87,7 +89,8 @@
                         </td>
                         <td>
                             <div class="d-flex">
-                                <a href="{{ route('posts.edit', $post) }}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                                <a href="{{ route('posts.show', $post) }}" class="btn btn-sm btn-secondary">Show</a>
+                                <a href="{{ route('posts.edit', $post) }}" class="btn btn-sm btn-primary mx-1">Edit</a>
                                 {{-- Fungsi confirm delete berada di _sweetalert2 folder partials --}}
                                 <form action="{{ route('posts.destroy', $post) }}" method="post" id="form-delete">
                                     @csrf
