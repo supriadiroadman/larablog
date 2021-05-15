@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use Intervention\Image\ImageManagerStatic as Image;
 /*
@@ -35,6 +36,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     // Bila ingin menggunakan slug tanpa merubah id menjadi slug di model 
     Route::resource('posts', PostController::class)->except(['edit']);
     Route::get('/posts/{post:slug}/edit', [PostController::class, 'edit'])->name('posts.edit');
+    Route::resource('users', UserController::class)->only('index', 'create', 'store', 'destroy');
 });
 
 // Filemanager
