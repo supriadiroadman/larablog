@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
-use App\Models\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Builder;
 
 class PostController extends Controller
 {
@@ -17,7 +17,18 @@ class PostController extends Controller
         $keyword = $request->keyword;
 
         if ($keyword) {
-            $posts = Post::where('title', 'LIKE', "%{$keyword}%")->orWhere('content', 'LIKE', "%{$keyword}%")->with('category', 'tags', 'user')->paginate(10)->withQueryString();
+            $posts = Post::with('category', 'tags', 'user')
+                ->orWhere('title', 'LIKE', "%{$keyword}%")->orWhere('content', 'LIKE', "%{$keyword}%")
+                ->orWhereHas('category', function (Builder $query) use ($keyword) {
+                    $query->where('name', 'LIKE', "%{$keyword}%");
+                })
+                ->orWhereHas('user', function (Builder $query) use ($keyword) {
+                    $query->where('name', 'LIKE', "%{$keyword}%");
+                })
+                ->orWhereHas('tags', function (Builder $query) use ($keyword) {
+                    $query->where('name', 'LIKE', "%{$keyword}%");
+                })
+                ->paginate(10)->withQueryString();
         } else {
             $posts = Post::with('category', 'tags', 'user')->paginate(10);
         }
