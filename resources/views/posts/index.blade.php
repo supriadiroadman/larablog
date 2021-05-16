@@ -92,6 +92,8 @@
                         <td>
                             <div class="d-flex">
                                 <a href="{{ route('posts.show', $post) }}" class="btn btn-sm btn-secondary">Show</a>
+
+                                @can('updateOrDelete-post', $post)
                                 <a href="{{ route('posts.edit', $post) }}" class="btn btn-sm btn-primary mx-1">Edit</a>
                                 {{-- Fungsi confirm delete berada di _sweetalert2 folder partials --}}
                                 <form action="{{ route('posts.destroy', $post) }}" method="post" id="form-delete">
@@ -100,6 +102,8 @@
                                     <button class="btn btn-sm btn-danger" id="delete"
                                         data-name="{{$post->title}}">Delete</button>
                                 </form>
+                                @endcan
+
                             </div>
                         </td>
                     </tr>

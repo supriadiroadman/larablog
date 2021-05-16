@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Intervention\Image\Facades\Image;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -94,6 +95,11 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        // $this->authorize('updateOrDelete-post', $post);
+        if (Gate::denies('updateOrDelete-post', $post)) {
+            return redirect()->back()->with('error', 'Anda tidak memiliki akses');
+        }
+
         $categories = Category::all();
         $tags = Tag::all();
         return view('posts.edit', compact('post', 'categories', 'tags'));
@@ -102,6 +108,11 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
+        // $this->authorize('updateOrDelete-post', $post);
+        if (Gate::denies('updateOrDelete-post', $post)) {
+            return redirect()->back()->with('error', 'Anda tidak memiliki akses');
+        }
+
         $validatedData = $request->validate([
             'title' => 'required|unique:posts,title,' . $post->id,
             'content' => 'required',
@@ -148,6 +159,11 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        // $this->authorize('updateOrDelete-post', $post);
+        if (Gate::denies('updateOrDelete-post', $post)) {
+            return redirect()->back()->with('error', 'Anda tidak memiliki akses');
+        }
+
         $image_path = "storage/posts/" . $post->image;
         if (file_exists($image_path)) {
             @unlink($image_path);
