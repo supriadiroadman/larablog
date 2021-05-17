@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -22,8 +23,11 @@ class ProfileController extends Controller
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
-        // Password di hash menggunakan mutator dimodel User (setPasswordAttribute)
-        $validatedData = $request->password ? $request->all() : $request->except('password', 'password_confirmation');
+        if ($request->has('password')) {
+            $validatedData['password'] = Hash::make($validatedData['password']);
+        } else {
+            $validatedData = $request->only('name', 'email');
+        }
 
         $profile->update($validatedData);
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -34,6 +35,8 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
+
+        $validatedData['password'] = Hash::make($validatedData['password']);
 
         User::create($validatedData);
         return redirect()->route('users.index')->with('success', "{$validatedData['name']} created!");
