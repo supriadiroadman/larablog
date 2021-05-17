@@ -67,7 +67,7 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        if ($category->count() > 0) {
+        if ($category->posts->count() > 0) {
             return redirect()->back()->with('error', "Kategori {$category->name} digunakan oleh post");
         }
 

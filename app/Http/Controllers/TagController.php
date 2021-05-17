@@ -66,7 +66,7 @@ class TagController extends Controller
 
     public function destroy(Tag $tag)
     {
-        if ($tag->count() > 0) {
+        if ($tag->posts->count() > 0) {
             return redirect()->back()->with('error', "Tag {$tag->name} digunakan oleh post");
         }
 

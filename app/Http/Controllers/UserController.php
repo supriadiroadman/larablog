@@ -41,6 +41,10 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        if ($user->posts->count() > 0) {
+            return redirect()->back()->with('error', "User {$user->name} memiliki post");
+        }
+
         $user->delete();
         return redirect()->route('users.index')->with('success', "{$user->name} deleted!");
     }
