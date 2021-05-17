@@ -38,6 +38,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('posts', PostController::class)->except(['edit']);
     Route::get('/posts/{post:slug}/edit', [PostController::class, 'edit'])->name('posts.edit');
     Route::resource('users', UserController::class)->only('index', 'create', 'store', 'destroy');
+    Route::post('users/{user}/make-admin', [UserController::class, 'makeAdmin'])->name('users.make-admin');
+    Route::post('users/{user}/make-user', [UserController::class, 'makeUser'])->name('users.make-user');
     Route::resource('profiles', ProfileController::class)->only('index', 'update');
 });
 

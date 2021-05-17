@@ -58,9 +58,12 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Post count</th>
                         <th>Role</th>
                         <th>Created</th>
+                        @if (auth()->user()->isAdmin())
                         <th>Action</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -69,9 +72,15 @@
                         <td>{{$loop->index + $users->firstItem() }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ ucfirst($user->role) }}</td>
+                        <td>{{ $user->posts->count() }}</td>
+                        <td><span
+                                class="badge badge-{{ $user->isAdmin() ? 'primary' : 'secondary' }}">{{ ucfirst($user->role) }}</span>
+                        </td>
                         <td>{{ $user->created_at->diffForHumans() }}</td>
+                        @if (auth()->user()->isAdmin())
                         <td>
+                            @if ($user->id != '1')
+
                             <div class="d-flex">
                                 {{-- <a href="{{ route('users.edit', $user) }}" class="btn btn-sm btn-primary
                                 mr-1">Edit</a> --}}
@@ -79,11 +88,25 @@
                                 <form action="{{ route('users.destroy', $user) }}" method="post" id="form-delete">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-sm btn-danger" id="delete"
+                                    <button class="btn btn-sm btn-danger mr-1" id="delete"
                                         data-name="{{$user->name}}">Delete</button>
                                 </form>
+
+                                @if ($user->isAdmin())
+                                <form action="{{ route('users.make-user', $user) }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-secondary mr-1">User</button>
+                                </form>
+                                @else
+                                <form action="{{ route('users.make-admin', $user) }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-primary">Admin</button>
+                                </form>
+                                @endif
                             </div>
+                            @endif
                         </td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>

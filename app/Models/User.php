@@ -47,6 +47,11 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function isAdmin()
+    {
+        return $this->role == 'admin';
+    }
+
     // public function setPasswordAttribute($value)
     // {
     //     $this->attributes['password'] = Hash::make($value);

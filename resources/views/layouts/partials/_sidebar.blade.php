@@ -85,6 +85,8 @@
         </div>
     </li>
 
+    @auth
+    @if (auth()->user()->isAdmin())
     <li class="nav-item {{ isActiveRoute('users*') }}">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true"
             aria-controls="collapseFour">
@@ -100,6 +102,8 @@
             </div>
         </div>
     </li>
+    @endif
+    @endauth
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
