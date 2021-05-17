@@ -29,7 +29,7 @@
 
 @if($users->count())
 <div class="row">
-    <div class="col-md-8">
+    <div class="col">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h1 class="h3 text-gray-800 d-inline-flex">Users</h1>
             <div>
