@@ -13,7 +13,7 @@ class CategoryController extends Controller
         $keyword = $request->keyword;
 
         if ($keyword) {
-            $categories = Category::with('posts')->where('name', 'LIKE', "%{$keyword}%")->paginate(2)->withQueryString();
+            $categories = Category::with('posts')->where('name', 'LIKE', "%{$keyword}%")->paginate(10)->withQueryString();
         } else {
             $categories = Category::with('posts')->paginate(10);
         }

@@ -13,7 +13,7 @@ class UserController extends Controller
         $keyword = $request->keyword;
 
         if ($keyword) {
-            $users = User::where('name', 'LIKE', "%{$keyword}%")->paginate(2)->withQueryString();
+            $users = User::where('name', 'LIKE', "%{$keyword}%")->paginate(10)->withQueryString();
         } else {
             $users = User::paginate(10);
         }
@@ -46,6 +46,10 @@ class UserController extends Controller
     {
         if ($user->posts->count() > 0) {
             return redirect()->back()->with('error', "User {$user->name} memiliki post");
+        }
+
+        if ($user->role == 'admin' && $user->id == '1') {
+            return redirect()->back()->with('error', "User {$user->name} tidak boleh dihapus");
         }
 
         $user->delete();
