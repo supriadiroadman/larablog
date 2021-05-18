@@ -25,6 +25,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 // Frontend
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/posts/{post:slug}', [BlogPostController::class, 'show'])->name('blog.show');
+Route::get('/category/{category:slug}', [BlogPostController::class, 'category'])->name('blog.category');
+Route::get('/tag/{tag:slug}', [BlogPostController::class, 'tag'])->name('blog.tag');
 
 
 // Auth

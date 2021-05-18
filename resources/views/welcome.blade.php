@@ -94,7 +94,7 @@ Welcome
                             @foreach ($categories as $category)
 
                             <div class="col-6">
-                                <a href="#">
+                                <a href="{{ route('blog.category', $category) }}">
                                     {{ $category->name }}
                                 </a>
                             </div>
@@ -130,7 +130,7 @@ Welcome
                         <div class="gap-multiline-items-1">
 
                             @foreach ($tags as $tag)
-                            <a class="badge badge-secondary" href="#">
+                            <a class="badge badge-secondary" href="{{ route('blog.tag', $tag) }}">
                                 {{$tag->name}}
                             </a>
                             @endforeach
