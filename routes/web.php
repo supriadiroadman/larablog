@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Blog\PostController as BlogPostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TagController;
@@ -21,10 +22,13 @@ use Intervention\Image\ImageManagerStatic as Image;
 |
 */
 
+// Frontend
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+Route::get('/posts/{post:slug}', [BlogPostController::class, 'show'])->name('blog.show');
 
+
+// Auth
 Auth::routes();
-
 
 // Admin
 Route::prefix('admin')->middleware('auth')->group(function () {
