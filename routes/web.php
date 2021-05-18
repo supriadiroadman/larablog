@@ -20,7 +20,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 */
 
 Route::get('/', function () {
-    return view('layouts.master');
+    return view('welcome');
 });
 
 Auth::routes();

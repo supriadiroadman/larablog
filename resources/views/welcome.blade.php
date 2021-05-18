@@ -2,422 +2,577 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="keywords" content="">
 
-    <title>SB Admin 2 - Blank</title>
+    <title>TheSaaS — Blog with sidebar</title>
 
-    <!-- Custom fonts for this template-->
-    <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <!-- Styles -->
+    <link href="{{ asset('frontend/css/page.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
 
-    <!-- Custom styles for this template-->
-    <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
-
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="{{ asset('frontend/img/apple-touch-icon.png') }}">
+    <link rel="icon" href="{{ asset('frontend/img/favicon.png') }}">
 </head>
 
-<body id="page-top">
+<body>
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-stick-dark" data-navbar="sticky">
+        <div class="container">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
+            <div class="navbar-left">
+                <button class="navbar-toggler" type="button">&#9776;</button>
+                <a class="navbar-brand" href="../index.html">
+                    <img class="logo-dark" src="../assets/img/logo-dark.png" alt="logo">
+                    <img class="logo-light" src="../assets/img/logo-light.png" alt="logo">
+                </a>
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
-                    </div>
-                </div>
-            </li>
+            <section class="navbar-mobile">
+                <span class="navbar-divider d-mobile-none"></span>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li>
+                <ul class="nav nav-navbar">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Demos <span class="arrow"></span></a>
+                        <ul class="nav">
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">SaaS <span class="arrow"></span></a>
+                                <nav class="nav">
+                                    <a class="nav-link" href="../demo/saas-1.html">SaaS 1</a>
+                                    <a class="nav-link" href="../demo/saas-2.html">SaaS 2</a>
+                                    <a class="nav-link" href="../demo/saas-3.html">SaaS 3</a>
+                                    <a class="nav-link" href="../demo/saas-4.html">SaaS 4</a>
+                                </nav>
+                            </li>
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Software <span class="arrow"></span></a>
+                                <nav class="nav">
+                                    <a class="nav-link" href="../demo/software-1.html">Software 1</a>
+                                    <a class="nav-link" href="../demo/software-2.html">Software 2</a>
+                                    <a class="nav-link" href="../demo/software-3.html">Software 3</a>
+                                </nav>
+                            </li>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-                    aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item active" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Marketing <span class="arrow"></span></a>
+                                <nav class="nav">
+                                    <a class="nav-link" href="../demo/marketing-1.html">Marketing 1</a>
+                                    <a class="nav-link" href="../demo/marketing-2.html">Marketing 2</a>
+                                </nav>
+                            </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Listing <span class="arrow"></span></a>
+                                <nav class="nav">
+                                    <a class="nav-link" href="../demo/listing-1.html">Listing 1</a>
+                                    <a class="nav-link" href="../demo/listing-2.html">Listing 2</a>
+                                </nav>
+                            </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../demo/finance-1.html">Finance</a>
+                            </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+                        </ul>
+                    </li>
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pages <span class="arrow"></span></a>
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../page/how-it-works.html">How it works</a>
+                            </li>
 
-        </ul>
-        <!-- End of Sidebar -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="../page/pricing.html">Pricing</a>
+                            </li>
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Portfolio <span class="arrow"></span></a>
+                                <nav class="nav">
+                                    <a class="nav-link" href="../page/portfolio.html">Potfolio listing</a>
+                                    <a class="nav-link" href="../page/portfolio-single.html">Potfolio single</a>
+                                </nav>
+                            </li>
 
-            <!-- Main Content -->
-            <div id="content">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Careers <span class="arrow"></span></a>
+                                <nav class="nav">
+                                    <a class="nav-link" href="../page/career.html">Careers listing</a>
+                                    <a class="nav-link" href="../page/career-single.html">Careers single</a>
+                                </nav>
+                            </li>
 
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Service <span class="arrow"></span></a>
+                                <nav class="nav">
+                                    <a class="nav-link" href="../page/service-1.html">Service 1</a>
+                                    <a class="nav-link" href="../page/service-2.html">Service 2</a>
+                                </nav>
+                            </li>
 
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About <span class="arrow"></span></a>
+                                <nav class="nav">
+                                    <a class="nav-link" href="../page/about-1.html">About 1</a>
+                                    <a class="nav-link" href="../page/about-2.html">About 2</a>
+                                    <a class="nav-link" href="../page/about-3.html">About 3</a>
+                                </nav>
+                            </li>
 
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact <span class="arrow"></span></a>
+                                <nav class="nav">
+                                    <a class="nav-link" href="../page/contact-1.html">Contact 1</a>
+                                    <a class="nav-link" href="../page/contact-2.html">Contact 2</a>
+                                    <a class="nav-link" href="../page/contact-3.html">Contact 3</a>
+                                </nav>
+                            </li>
+
+                            <li class="nav-divider"></li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Extra <span class="arrow"></span></a>
+                                <nav class="nav">
+                                    <a class="nav-link" href="../page/demo.html">Request demo</a>
+                                    <a class="nav-link" href="../page/coming-soon.html">Coming soon</a>
+                                    <a class="nav-link" href="../page/terms.html">Terms</a>
+                                    <a class="nav-link" href="../page/error-404.html">Error 404</a>
+                                </nav>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">User <span class="arrow"></span></a>
+                                <nav class="nav">
+                                    <a class="nav-link" href="../page/user-login.html">Login</a>
+                                    <a class="nav-link" href="../page/user-register.html">Register</a>
+                                    <a class="nav-link" href="../page/user-recover.html">Recover</a>
+                                </nav>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Docs <span class="arrow"></span></a>
+                                <nav class="nav">
+                                    <a class="nav-link" href="../docs/index.html">Support center</a>
+                                    <a class="nav-link" href="../docs/articles.html">Articles</a>
+                                    <a class="nav-link" href="../docs/faq.html">FAQ</a>
+                                </nav>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Blog <span class="arrow"></span></a>
+                        <nav class="nav">
+                            <a class="nav-link" href="../blog/classic.html">Classic</a>
+                            <a class="nav-link" href="../blog/grid.html">Grid</a>
+                            <a class="nav-link" href="../blog/list.html">List</a>
+                            <a class="nav-link active" href="../blog/sidebar.html">Sidebar</a>
+                            <div class="nav-divider"></div>
+                            <a class="nav-link" href="../blog/post-1.html">Post 1</a>
+                            <a class="nav-link" href="../blog/post-2.html">Post 2</a>
+                        </nav>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Shop <span class="arrow"></span></a>
+                        <nav class="nav">
+                            <a class="nav-link" href="../shop/list.html">List</a>
+                            <a class="nav-link" href="../shop/item.html">Item</a>
+                            <a class="nav-link" href="../shop/cart.html">Cart</a>
+                            <a class="nav-link" href="../shop/checkout.html">Checkout</a>
+                        </nav>
+                    </li>
+
+                    <li class="nav-item nav-mega">
+                        <a class="nav-link" href="#">Blocks <span class="arrow"></span></a>
+                        <nav class="nav px-lg-2 py-lg-4">
+                            <div class="container-fluid">
+                                <div class="row">
+
+                                    <div class="col-lg">
+                                        <nav class="nav flex-column">
+                                            <a class="nav-link" href="../block/blog.html">Blog</a>
+                                            <a class="nav-link" href="../block/career.html">Career</a>
+                                            <a class="nav-link" href="../block/contact.html">Contact</a>
+                                            <a class="nav-link" href="../block/content.html">Content</a>
+                                            <a class="nav-link" href="../block/counter.html">Counter</a>
+                                            <a class="nav-link" href="../block/cover.html">Cover</a>
+                                            <a class="nav-link" href="../block/cta.html">Call to action</a>
+                                            <a class="nav-link" href="../block/download.html">Download</a>
+                                            <a class="nav-link" href="../block/explore.html">Explore</a>
+                                            <a class="nav-link" href="../block/faq.html">FAQ</a>
+                                        </nav>
+                                    </div>
+
+                                    <div class="col-lg">
+                                        <nav class="nav flex-column">
+                                            <a class="nav-link" href="../block/feature-text.html">Feature textual</a>
+                                            <a class="nav-link" href="../block/feature.html">Feature</a>
+                                            <a class="nav-link" href="../block/footer.html">Footer</a>
+                                            <a class="nav-link" href="../block/gallery.html">Gallery</a>
+                                            <a class="nav-link" href="../block/header.html">Header</a>
+                                            <a class="nav-link" href="../block/map.html">Map</a>
+                                            <a class="nav-link" href="../block/modal.html">Modal</a>
+                                            <a class="nav-link" href="../block/offcanvas.html">Offcanvas</a>
+                                            <a class="nav-link" href="../block/partner.html">Partner</a>
+                                            <a class="nav-link" href="../block/popup.html">Popup</a>
+                                        </nav>
+                                    </div>
+
+                                    <div class="col-lg">
+                                        <nav class="nav flex-column">
+                                            <a class="nav-link" href="../block/portfolio.html">Portfolio</a>
+                                            <a class="nav-link" href="../block/pricing.html">Pricing</a>
+                                            <a class="nav-link" href="../block/process.html">Process</a>
+                                            <a class="nav-link" href="../block/service.html">Service</a>
+                                            <a class="nav-link" href="../block/shop.html">Shop</a>
+                                            <a class="nav-link" href="../block/signup.html">Signup</a>
+                                            <a class="nav-link" href="../block/subscribe.html">Subscribe</a>
+                                            <a class="nav-link" href="../block/team.html">Team</a>
+                                            <a class="nav-link" href="../block/testimonial.html">Testimonial</a>
+                                            <a class="nav-link" href="../block/video.html">Video</a>
+                                        </nav>
+                                    </div>
+
+                                </div>
                             </div>
+                        </nav>
+                    </li>
+
+                    <li class="nav-item nav-mega">
+                        <a class="nav-link" href="#">UI Kit <span class="arrow"></span></a>
+                        <nav class="nav px-lg-2 py-lg-4">
+                            <div class="container-fluid">
+                                <div class="row">
+
+                                    <div class="col-lg-3">
+                                        <nav class="nav flex-column">
+                                            <a class="nav-link" href="../uikit/accordion.html">Accordion</a>
+                                            <a class="nav-link" href="../uikit/alert.html">Alert</a>
+                                            <a class="nav-link" href="../uikit/badge.html">Badge</a>
+                                            <a class="nav-link" href="../uikit/button.html">Button</a>
+                                            <a class="nav-link" href="../uikit/card.html">Card</a>
+                                            <a class="nav-link" href="../uikit/color.html">Colors</a>
+                                            <a class="nav-link" href="../uikit/constellation.html">Constellation</a>
+                                            <a class="nav-link" href="../uikit/content.html">Content</a>
+                                            <a class="nav-link" href="../uikit/countdown.html">Count down</a>
+                                            <a class="nav-link" href="../uikit/countup.html">Count up</a>
+                                        </nav>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <nav class="nav flex-column">
+                                            <a class="nav-link" href="../uikit/dropdown.html">Dropdown</a>
+                                            <a class="nav-link" href="../uikit/form.html">Form</a>
+                                            <a class="nav-link" href="../uikit/gallery.html">Gallery</a>
+                                            <a class="nav-link" href="../uikit/granim.html">Granim</a>
+                                            <a class="nav-link" href="../uikit/icon.html">Icon</a>
+                                            <a class="nav-link" href="../uikit/image.html">Image</a>
+                                            <a class="nav-link" href="../uikit/lightbox.html">Lightbox</a>
+                                            <a class="nav-link" href="../uikit/map.html">Map</a>
+                                            <a class="nav-link" href="../uikit/misc.html">Miscellaneous</a>
+                                            <a class="nav-link" href="../uikit/modal.html">Modal</a>
+                                        </nav>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <nav class="nav flex-column">
+                                            <a class="nav-link" href="../uikit/nav.html">Nav</a>
+                                            <a class="nav-link" href="../uikit/navbar.html">Navbar</a>
+                                            <a class="nav-link" href="../uikit/offcanvas.html">Offcanvas</a>
+                                            <a class="nav-link" href="../uikit/overlay.html">Overlay</a>
+                                            <a class="nav-link" href="../uikit/popup.html">Popup</a>
+                                            <a class="nav-link" href="../uikit/pricing.html">Pricing</a>
+                                            <a class="nav-link" href="../uikit/process.html">Process</a>
+                                            <a class="nav-link" href="../uikit/progress.html">Progress</a>
+                                            <a class="nav-link" href="../uikit/scroll.html">Scroll</a>
+                                            <a class="nav-link" href="../uikit/section.html">Section</a>
+                                        </nav>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <nav class="nav flex-column">
+                                            <a class="nav-link" href="../uikit/shuffle.html">Shuffle</a>
+                                            <a class="nav-link" href="../uikit/slider.html">Slider</a>
+                                            <a class="nav-link" href="../uikit/social.html">Social</a>
+                                            <a class="nav-link" href="../uikit/tab.html">Tab</a>
+                                            <a class="nav-link" href="../uikit/table.html">Table</a>
+                                            <a class="nav-link" href="../uikit/topbar.html">Topbar</a>
+                                            <a class="nav-link" href="../uikit/typing.html">Typing</a>
+                                            <a class="nav-link" href="../uikit/typography.html">Typography</a>
+                                            <a class="nav-link" href="../uikit/utility.html">Utility</a>
+                                            <a class="nav-link" href="../uikit/video.html">Video</a>
+                                        </nav>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </nav>
+                    </li>
+
+                </ul>
+            </section>
+
+            <a class="btn btn-xs btn-round btn-success"
+                href="https://themeforest.net/item/thesaas-responsive-bootstrap-saas-software-webapp-template/19778599?license=regular&open_purchase_for_item_id=19778599&purchasable=source&ref=thethemeio">Buy
+                Now</a>
+
+        </div>
+    </nav><!-- /.navbar -->
+
+
+    <!-- Header -->
+    <header class="header text-center text-white"
+        style="background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+
+                    <h1>Latest Blog Posts</h1>
+                    <p class="lead-2 opacity-90 mt-6">Read and get updated on how we progress</p>
+
+                </div>
+            </div>
+
+        </div>
+    </header><!-- /.header -->
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="section bg-gray">
+            <div class="container">
+                <div class="row">
+
+
+                    <div class="col-md-8 col-xl-9">
+                        <div class="row gap-y">
+
+                            <div class="col-md-6">
+                                <div class="card border hover-shadow-6 mb-6 d-block">
+                                    <a href="#"><img class="card-img-top" src="../assets/img/thumb/1.jpg"
+                                            alt="Card image cap"></a>
+                                    <div class="p-6 text-center">
+                                        <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">News</a>
+                                        </p>
+                                        <h5 class="mb-0"><a class="text-dark" href="#">We relocated our office to a new
+                                                designed garage</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="card border hover-shadow-6 mb-6 d-block">
+                                    <a href="#"><img class="card-img-top" src="../assets/img/thumb/2.jpg"
+                                            alt="Card image cap"></a>
+                                    <div class="p-6 text-center">
+                                        <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400"
+                                                href="#">Marketing</a></p>
+                                        <h5 class="mb-0"><a class="text-dark" href="#">Top 5 brilliant content marketing
+                                                strategies</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="card border hover-shadow-6 mb-6 d-block">
+                                    <a href="#"><img class="card-img-top" src="../assets/img/thumb/3.jpg"
+                                            alt="Card image cap"></a>
+                                    <div class="p-6 text-center">
+                                        <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400"
+                                                href="#">Design</a></p>
+                                        <h5 class="mb-0"><a class="text-dark" href="#">Best practices for minimalist
+                                                design with example</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="card border hover-shadow-6 mb-6 d-block">
+                                    <a href="#"><img class="card-img-top" src="../assets/img/thumb/4.jpg"
+                                            alt="Card image cap"></a>
+                                    <div class="p-6 text-center">
+                                        <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400"
+                                                href="#">Hiring</a></p>
+                                        <h5 class="mb-0"><a class="text-dark" href="#">Congratulate and thank to Maryam
+                                                for joining our team</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="card border hover-shadow-6 mb-6 d-block">
+                                    <a href="#"><img class="card-img-top" src="../assets/img/thumb/5.jpg"
+                                            alt="Card image cap"></a>
+                                    <div class="p-6 text-center">
+                                        <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400"
+                                                href="#">Product</a></p>
+                                        <h5 class="mb-0"><a class="text-dark" href="#">New published books to read by a
+                                                product designer</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="card border hover-shadow-6 mb-6 d-block">
+                                    <a href="#"><img class="card-img-top" src="../assets/img/thumb/6.jpg"
+                                            alt="Card image cap"></a>
+                                    <div class="p-6 text-center">
+                                        <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400"
+                                                href="#">Management</a></p>
+                                        <h5 class="mb-0"><a class="text-dark" href="#">This is why it's time to ditch
+                                                dress codes at work</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
-                    </form>
 
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
+                        <nav class="flexbox mt-30">
+                            <a class="btn btn-white disabled"><i class="ti-arrow-left fs-9 mr-4"></i> Newer</a>
+                            <a class="btn btn-white" href="#">Older <i class="ti-arrow-right fs-9 ml-4"></i></a>
+                        </nav>
+                    </div>
+
+
+
+                    <div class="col-md-4 col-xl-3">
+                        <div class="sidebar px-4 py-md-0">
+
+                            <h6 class="sidebar-title">Search</h6>
+                            <form class="input-group" target="#" method="GET">
+                                <input type="text" class="form-control" name="s" placeholder="Search">
+                                <div class="input-group-addon">
+                                    <span class="input-group-text"><i class="ti-search"></i></span>
+                                </div>
+                            </form>
+
+                            <hr>
+
+                            <h6 class="sidebar-title">Categories</h6>
+                            <div class="row link-color-default fs-14 lh-24">
+                                <div class="col-6"><a href="#">News</a></div>
+                                <div class="col-6"><a href="#">Updates</a></div>
+                                <div class="col-6"><a href="#">Design</a></div>
+                                <div class="col-6"><a href="#">Marketing</a></div>
+                                <div class="col-6"><a href="#">Partnership</a></div>
+                                <div class="col-6"><a href="#">Product</a></div>
+                                <div class="col-6"><a href="#">Hiring</a></div>
+                                <div class="col-6"><a href="#">Offers</a></div>
                             </div>
-                        </li>
 
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
+                            <hr>
+
+                            <h6 class="sidebar-title">Top posts</h6>
+                            <a class="media text-default align-items-center mb-5" href="blog-single.html">
+                                <img class="rounded w-65px mr-4" src="../assets/img/thumb/4.jpg">
+                                <p class="media-body small-2 lh-4 mb-0">Thank to Maryam for joining our team</p>
                             </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
 
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
+                            <a class="media text-default align-items-center mb-5" href="blog-single.html">
+                                <img class="rounded w-65px mr-4" src="../assets/img/thumb/3.jpg">
+                                <p class="media-body small-2 lh-4 mb-0">Best practices for minimalist design</p>
                             </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="{{ asset('assets/img/undraw_profile_1.svg') }}"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="{{ asset('assets/img/undraw_profile_2.svg') }}"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="{{ asset('assets/img/undraw_profile_3.svg') }}"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
 
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="{{ asset('assets/img/undraw_profile.svg') }}">
+                            <a class="media text-default align-items-center mb-5" href="blog-single.html">
+                                <img class="rounded w-65px mr-4" src="../assets/img/thumb/5.jpg">
+                                <p class="media-body small-2 lh-4 mb-0">New published books for product designers</p>
                             </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
+
+                            <a class="media text-default align-items-center mb-5" href="blog-single.html">
+                                <img class="rounded w-65px mr-4" src="../assets/img/thumb/2.jpg">
+                                <p class="media-body small-2 lh-4 mb-0">Top 5 brilliant content marketing strategies</p>
+                            </a>
+
+                            <hr>
+
+                            <h6 class="sidebar-title">Tags</h6>
+                            <div class="gap-multiline-items-1">
+                                <a class="badge badge-secondary" href="#">Record</a>
+                                <a class="badge badge-secondary" href="#">Progress</a>
+                                <a class="badge badge-secondary" href="#">Customers</a>
+                                <a class="badge badge-secondary" href="#">Freebie</a>
+                                <a class="badge badge-secondary" href="#">Offer</a>
+                                <a class="badge badge-secondary" href="#">Screenshot</a>
+                                <a class="badge badge-secondary" href="#">Milestone</a>
+                                <a class="badge badge-secondary" href="#">Version</a>
+                                <a class="badge badge-secondary" href="#">Design</a>
+                                <a class="badge badge-secondary" href="#">Customers</a>
+                                <a class="badge badge-secondary" href="#">Job</a>
                             </div>
-                        </li>
 
-                    </ul>
+                            <hr>
 
-                </nav>
-                <!-- End of Topbar -->
+                            <h6 class="sidebar-title">About</h6>
+                            <p class="small-3">TheSaaS is a responsive, professional, and multipurpose SaaS, Software,
+                                Startup and WebApp landing template powered by Bootstrap 4. TheSaaS is a powerful and
+                                super flexible tool for any kind of landing pages.</p>
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+                        </div>
+                    </div>
 
                 </div>
-                <!-- /.container-fluid -->
-
             </div>
-            <!-- End of Main Content -->
+        </div>
+    </main>
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row gap-y align-items-center">
+
+                <div class="col-6 col-lg-3">
+                    <a href="../index.html"><img src="../assets/img/logo-dark.png" alt="logo"></a>
+                </div>
+
+                <div class="col-6 col-lg-3 text-right order-lg-last">
+                    <div class="social">
+                        <a class="social-facebook" href="https://www.facebook.com/thethemeio"><i
+                                class="fa fa-facebook"></i></a>
+                        <a class="social-twitter" href="https://twitter.com/thethemeio"><i
+                                class="fa fa-twitter"></i></a>
+                        <a class="social-instagram" href="https://www.instagram.com/thethemeio/"><i
+                                class="fa fa-instagram"></i></a>
+                        <a class="social-dribbble" href="https://dribbble.com/thethemeio"><i
+                                class="fa fa-dribbble"></i></a>
                     </div>
                 </div>
-            </footer>
-            <!-- End of Footer -->
 
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
+                <div class="col-lg-6">
+                    <div class="nav nav-bold nav-uppercase nav-trim justify-content-lg-center">
+                        <a class="nav-link" href="../uikit/index.html">Elements</a>
+                        <a class="nav-link" href="../block/index.html">Blocks</a>
+                        <a class="nav-link" href="../page/about-1.html">About</a>
+                        <a class="nav-link" href="../blog/grid.html">Blog</a>
+                        <a class="nav-link" href="../page/contact-1.html">Contact</a>
+                    </div>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
+
             </div>
         </div>
-    </div>
+    </footer><!-- /.footer -->
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('frontend/js/page.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/script.js') }}"></script>
 
 </body>
 
