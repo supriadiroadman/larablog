@@ -14,11 +14,14 @@
         <div class="row h-100">
             <div class="col-lg-8 mx-auto align-self-center">
 
-                <p class="opacity-70 text-uppercase small ls-1">{{ $post->category->name }}</p>
-                <h1 class="display-4 mt-7 mb-8">{{ $post->title }}</h1>
+                <a href="{{ route('blog.category', $post->category) }}">
+                    <p class="opacity-70 text-uppercase small ls-1">{{ $post->category->name }}</p>
+                </a>
+                {{-- <h1 class="display-4 mt-7 mb-8">{{ $post->title }}</h1> --}}
+                <h3 class="ls-1 mt-7 mb-8">{{ $post->title }}</h3>
                 <p><span class="opacity-70 mr-1">By</span> <a class="text-white" href="#">{{ $post->user->name }}</a>
                 </p>
-                <p><img class="avatar avatar-sm" src="../assets/img/avatar/2.jpg" alt="..."></p>
+                {{-- <p><img class="avatar avatar-sm" src="../assets/img/avatar/2.jpg" alt="..."></p> --}}
 
             </div>
 
@@ -60,7 +63,7 @@
                     <div class="gap-xy-2 mt-6">
 
                         @foreach ($post->tags as $tag)
-                        <a class="badge badge-pill badge-secondary" href="#">
+                        <a class="badge badge-pill badge-secondary" href="{{ route('blog.tag', $tag) }}">
                             {{ $tag->name }}
                         </a>
                         @endforeach

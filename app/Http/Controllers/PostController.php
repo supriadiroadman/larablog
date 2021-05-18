@@ -49,7 +49,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required|unique:posts,title',
+            'title' => 'required|max:255|unique:posts,title',
             'content' => 'required',
             'category_id' => 'required|exists:categories,id',
             'image' => 'sometimes|image|mimes:jpg,png,jpeg'
@@ -114,7 +114,7 @@ class PostController extends Controller
         }
 
         $validatedData = $request->validate([
-            'title' => 'required|unique:posts,title,' . $post->id,
+            'title' => 'required|max:255|unique:posts,title,' . $post->id,
             'content' => 'required',
             'category_id' => 'required|exists:categories,id',
             'image' => 'sometimes|image|mimes:jpg,png,jpeg'
