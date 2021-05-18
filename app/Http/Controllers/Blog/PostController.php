@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -28,6 +29,14 @@ class PostController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         $posts = $tag->posts()->paginate(8);
+        return view('welcome', compact('categories', 'tags', 'posts'));
+    }
+
+    public function author(User $user)
+    {
+        $categories = Category::all();
+        $tags = Tag::all();
+        $posts = $user->posts()->paginate(8);
         return view('welcome', compact('categories', 'tags', 'posts'));
     }
 }

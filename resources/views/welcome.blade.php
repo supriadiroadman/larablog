@@ -45,14 +45,21 @@ Welcome
                                 </a>
                                 <div class="p-6 text-center">
 
-                                    <a class="small-5 text-lighter text-uppercase ls-2 fw-400"
-                                        href="{{ route('blog.category', $post->category) }}">
-                                        {{ $post->category->name }}
-                                    </a>
+                                    <div class="d-flex justify-content-around">
+                                        <a class="small-5 text-uppercase ls-2 fw-400"
+                                            href="{{ route('blog.author', $post->user) }}">
+                                            <strong>By </strong>{{ $post->user->name }}
+                                        </a>
+
+                                        <a class="small-5 text-uppercase ls-2 fw-400"
+                                            href="{{ route('blog.category', $post->category) }}">
+                                            {{ $post->category->name }}
+                                        </a>
+                                    </div>
 
                                     <p>
                                         @foreach ($post->tags as $tag)
-                                        <a class="small-5 text-uppercase ls-1 fw-400 mr-2"
+                                        <a class="small-5 text-lighter text-uppercase ls-1 fw-400 mr-2"
                                             href="{{ route('blog.tag', $tag) }}">
                                             {{ $tag->name }}
                                         </a>

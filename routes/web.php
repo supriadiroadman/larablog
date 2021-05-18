@@ -27,6 +27,7 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/posts/{post:slug}', [BlogPostController::class, 'show'])->name('blog.show');
 Route::get('/category/{category:slug}', [BlogPostController::class, 'category'])->name('blog.category');
 Route::get('/tag/{tag:slug}', [BlogPostController::class, 'tag'])->name('blog.tag');
+Route::get('/author/{user:slug}', [BlogPostController::class, 'author'])->name('blog.author');
 
 
 // Auth

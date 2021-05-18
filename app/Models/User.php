@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -50,6 +51,13 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->role == 'admin';
+    }
+
+    // Generate automatic slug
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
     }
 
     // public function setPasswordAttribute($value)

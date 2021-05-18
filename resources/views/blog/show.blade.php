@@ -19,7 +19,8 @@
                 </a>
                 {{-- <h1 class="display-4 mt-7 mb-8">{{ $post->title }}</h1> --}}
                 <h3 class="ls-1 mt-7 mb-8">{{ $post->title }}</h3>
-                <p><span class="opacity-70 mr-1">By</span> <a class="text-white" href="#">{{ $post->user->name }}</a>
+                <p><span class="opacity-70 mr-1">By</span> <a class="text-white"
+                        href="{{ route('blog.author', $post->user) }}">{{ $post->user->name }}</a>
                 </p>
                 {{-- <p><img class="avatar avatar-sm" src="../assets/img/avatar/2.jpg" alt="..."></p> --}}
 
