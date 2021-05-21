@@ -37,12 +37,13 @@ Welcome
                     <div class="row gap-y">
 
                         @forelse ($posts as $post)
-                        <div class="col-md-6">
+                        <div class="col-md-4 d-flex align-items-stretch">
                             <div class="card border hover-shadow-6 mb-6 d-block">
                                 <a href="{{ route('blog.show', $post) }}">
                                     <img class="card-img-top" src="{{ asset('storage/posts/'.$post->image) }}"
-                                        alt="Card image cap">
+                                        alt="Card image cap" style="width:100%; height: 30vh; object-fit: cover">
                                 </a>
+
                                 <div class="p-6 text-center">
 
                                     <div class="d-flex justify-content-around">

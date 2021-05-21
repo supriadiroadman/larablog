@@ -9,6 +9,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentReplyController;
+use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\WelcomeController;
 use Intervention\Image\ImageManagerStatic as Image;
 /*
@@ -28,6 +30,9 @@ Route::get('/posts/{post:slug}', [BlogPostController::class, 'show'])->name('blo
 Route::get('/category/{category:slug}', [BlogPostController::class, 'category'])->name('blog.category');
 Route::get('/tag/{tag:slug}', [BlogPostController::class, 'tag'])->name('blog.tag');
 Route::get('/author/{user:slug}', [BlogPostController::class, 'author'])->name('blog.author');
+
+Route::resource('posts.comments', PostCommentController::class);
+Route::resource('comments.replies', CommentReplyController::class);
 
 
 // Auth

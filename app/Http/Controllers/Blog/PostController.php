@@ -13,6 +13,7 @@ class PostController extends Controller
 {
     public function show(Post $post)
     {
+        $post->load(['comments.user', 'comments.replies.user', 'comments.replies']);
         return view('blog.show', compact('post'));
     }
 

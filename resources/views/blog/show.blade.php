@@ -92,74 +92,93 @@
                 <div class="col-lg-8 mx-auto">
 
                     <div class="media-list">
+                        @php
+                        $repliesCount = $post->comments->reduce(function ($count, $comment) {
+                        return $count + $comment->replies->count();
+                        }, 0);
+                        @endphp
 
-                        <div class="media">
-                            <img class="avatar avatar-sm mr-4" src="../assets/img/avatar/1.jpg" alt="...">
-
-                            <div class="media-body">
-                                <div class="small-1">
-                                    <strong>Maryam Amiri</strong>
-                                    <time class="ml-4 opacity-70 small-3" datetime="2018-07-14 20:00">24 min ago</time>
-                                </div>
-                                <p class="small-2 mb-0">Thoughts his tend and both it fully to would the their reached
-                                    drew project the be I hardly just tried constructing I his wonder, that his software
-                                    and need out where didn't the counter productive.</p>
-                            </div>
-                        </div>
-
-
-
-                        <div class="media">
-                            <img class="avatar avatar-sm mr-4" src="../assets/img/avatar/2.jpg" alt="...">
+                        <h5> {{   $repliesCount + $post->comments->count()  }} COMMENTS</h5>
+                        @foreach ($post->comments as $comment)
+                        <div class="media mt-5">
+                            <img class="avatar avatar-sm mr-4" src="https://via.placeholder.com/50x50" alt="...">
 
                             <div class="media-body">
                                 <div class="small-1">
-                                    <strong>Hossein Shams</strong>
-                                    <time class="ml-4 opacity-70 small-3" datetime="2018-07-14 20:00">6 hours ago</time>
+                                    <strong>{{ $comment->user->name }}</strong>
+                                    <time class="ml-4 opacity-70 small-3" datetime="2018-07-14 20:00">
+                                        {{ $comment->created_at->diffForHumans() }}
+                                    </time>
                                 </div>
-                                <p class="small-2 mb-0">Was my suppliers, has concept how few everything task music.</p>
+                                <p class="small-2 mb-0">{!! $comment->body !!}</p>
                             </div>
+                            <button type="button" class="btn btn-link"
+                                onclick="showReplyForm('{{ $comment->id }}', '{{ $comment->user->name }}')">Reply</button>
                         </div>
 
 
-
-                        <div class="media">
-                            <img class="avatar avatar-sm mr-4" src="../assets/img/avatar/3.jpg" alt="...">
+                        @foreach ($comment->replies as $reply)
+                        <div class="media" style="margin-left: 55px">
+                            <img class="avatar avatar-sm mr-4" src="https://via.placeholder.com/50x50" alt="...">
 
                             <div class="media-body">
                                 <div class="small-1">
-                                    <strong>Sarah Hanks</strong>
-                                    <time class="ml-4 opacity-70 small-3" datetime="2018-07-14 20:00">Yesterday</time>
+                                    <strong>{{ $reply->user->name }}</strong>
+                                    <time class="ml-4 opacity-70 small-3" datetime="2018-07-14 20:00">
+                                        {{ $reply->created_at->diffForHumans() }}
+                                    </time>
                                 </div>
-                                <p class="small-2 mb-0">Been me have the no a themselves, agency, it that if conduct,
-                                    posts, another who to assistant done rattling forth there the customary imitation.
-                                </p>
+                                <p class="small-2 mb-0">{{ $reply->body }}</p>
                             </div>
+                            <button type="button" class="btn btn-link"
+                                onclick="showReplyForm('{{ $comment->id }}', '{{ $reply->user->name }}')">Reply</button>
                         </div>
+                        @endforeach
 
+
+                        <form action="{{ route('comments.replies.store', $comment) }}" method="post">
+                            @csrf
+                            <div id="reply-form-{{ $comment->id }}" style="display: none; margin-left: 55px">
+                                <div>
+                                    <h5>{{ auth()->user()->name ?? '' }}</h5>
+                                    <div class="form-group">
+
+                                        <textarea id="reply-form-{{$comment->id}}-text" class="form-control" name="body"
+                                            rows="5"></textarea>
+                                        @error('body')
+                                        <strong class="text-danger">
+                                            {{$message}}
+                                        </strong>
+                                        @enderror
+                                    </div>
+                                    <button type="submit" class="btn btn-sm btn-primary">
+                                        {{ Auth::check() ? 'Reply' : 'Login' }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        @endforeach
                     </div>
 
 
-                    <hr>
+                    <br>
 
-
-                    <form action="#" method="POST">
-
-                        <div class="row">
-                            <div class="form-group col-12 col-md-6">
-                                <input class="form-control" type="text" placeholder="Name">
-                            </div>
-
-                            <div class="form-group col-12 col-md-6">
-                                <input class="form-control" type="text" placeholder="Email">
-                            </div>
-                        </div>
-
+                    <form action="{{ route('posts.comments.store', $post) }}" method="POST">
+                        @csrf
                         <div class="form-group">
-                            <textarea class="form-control" placeholder="Comment" rows="4"></textarea>
+                            <textarea id="editor" name="body" class="form-control  @error('body') is-invalid @enderror"
+                                placeholder="Comment" rows="4"></textarea>
+                            @error('body')
+                            <strong class="text-danger">
+                                {{$message}}
+                            </strong>
+                            @enderror
                         </div>
 
-                        <button class="btn btn-primary btn-block" type="submit">Submit your comment</button>
+                        <button class="btn btn-primary btn-block" type="submit">
+                            {{ Auth::check() ? 'COMMENT' : 'Login' }}
+                        </button>
                     </form>
 
                 </div>
@@ -169,7 +188,46 @@
     </div>
 
 
-
 </main>
 
 @endsection
+
+@push('scripts')
+<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
+
+<script>
+    ClassicEditor.create( document.querySelector( '#editor' ) )
+                .then( editor => {
+                    console.log( editor );
+                } )
+                .catch( error => {
+                    console.error( error );
+                 } );
+  
+
+    function showReplyForm(commentId,user) {
+      var x = document.getElementById(`reply-form-${commentId}`);
+      var input = document.getElementById(`reply-form-${commentId}-text`);
+
+      if (x.style.display === "none") {
+        x.style.display = "block";
+        input.innerText=`@${user} `;
+
+        var len = input.value.length;
+        input.focus();
+        input.setSelectionRange(len, len);
+
+      } else {
+        x.style.display = "none";
+      }
+    }
+</script>
+@endpush
+
+@push('styles')
+<style>
+    .ck-editor__editable_inline {
+        min-height: 150px;
+    }
+</style>
+@endpush
