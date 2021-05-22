@@ -49,10 +49,10 @@
             </section>
 
             @auth
-            <a class="btn btn-xs btn-round btn-success" href="{{ route('home') }}"
+            <a class="btn btn-xs btn-round btn-primary" href="{{ route('home') }}"
                 target="_blank">{{ $setting->menu ?? 'Dashboard' }}</a>
             @else
-            <a class="btn btn-xs btn-round btn-success" href="{{ route('login') }}">Login</a>
+            <a class="btn btn-xs btn-round btn-primary" href="{{ route('login') }}">Login</a>
             @endauth
 
         </div>
