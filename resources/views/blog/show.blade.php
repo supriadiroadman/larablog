@@ -98,7 +98,7 @@
                         }, 0);
                         @endphp
 
-                        <h5> {{   $repliesCount + $post->comments->count()  }} COMMENTS</h5>
+                        <h5> {{ $repliesCount + $post->comments->count() }} COMMENTS</h5>
                         @foreach ($post->comments as $comment)
                         <div class="media mt-5">
                             <img class="avatar avatar-sm mr-4" src="https://via.placeholder.com/50x50" alt="...">
@@ -143,9 +143,9 @@
                                     <h5>{{ auth()->user()->name ?? '' }}</h5>
                                     <div class="form-group">
 
-                                        <textarea id="reply-form-{{$comment->id}}-text" class="form-control" name="body"
-                                            rows="5"></textarea>
-                                        @error('body')
+                                        <textarea id="reply-form-{{$comment->id}}-text" class="form-control"
+                                            name="body_reply" rows="5"></textarea>
+                                        @error('body_reply')
                                         <strong class="text-danger">
                                             {{$message}}
                                         </strong>

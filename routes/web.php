@@ -31,8 +31,8 @@ Route::get('/category/{category:slug}', [BlogPostController::class, 'category'])
 Route::get('/tag/{tag:slug}', [BlogPostController::class, 'tag'])->name('blog.tag');
 Route::get('/author/{user:slug}', [BlogPostController::class, 'author'])->name('blog.author');
 
-Route::resource('posts.comments', PostCommentController::class);
-Route::resource('comments.replies', CommentReplyController::class);
+Route::resource('posts.comments', PostCommentController::class)->only('store');
+Route::resource('comments.replies', CommentReplyController::class)->only('store');
 
 
 // Auth
