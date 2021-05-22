@@ -119,6 +119,22 @@
             </div>
         </div>
     </li>
+
+    <li class="nav-item {{ isActiveRoute('replies*') }}">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true"
+            aria-controls="collapseSix">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Replies</span>
+        </a>
+        <div id="collapseSix" class="collapse {{isActiveRoute('replies*', 'show') }}" aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Menu Replies:</h6>
+                <a class="collapse-item {{isActiveRoute('replies.index')}}"
+                    href="{{ route('replies.index') }}">Index</a>
+            </div>
+        </div>
+    </li>
     @endif
     @endauth
 
