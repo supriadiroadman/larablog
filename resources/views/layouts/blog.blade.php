@@ -22,7 +22,9 @@
 </head>
 
 <body>
-
+    @php
+    $setting = App\Models\Setting::first();
+    @endphp
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-stick-dark" data-navbar="sticky">
@@ -31,8 +33,8 @@
             <div class="navbar-left">
                 {{-- <button class="navbar-toggler" type="button">&#9776;</button> --}}
                 <a class="navbar-brand" href="{{ route('welcome') }}">
-                    <h5 class="logo-dark">LaraBlog</h5>
-                    <h5 class="logo-light text-white">LaraBlog</h5>
+                    <h5 class="logo-dark">{{ $setting->name ?? 'LaraBlog'}}</h5>
+                    <h5 class="logo-light text-white">{{ $setting->name ?? 'LaraBlog'}}</h5>
                     {{-- <img class="logo-dark" src="{{ asset('frontend/img/logo-dark.png') }}" alt="logo">
                     <img class="logo-light" src="{{ asset('frontend/img/logo-light.png') }}" alt="logo"> --}}
                 </a>
@@ -47,7 +49,8 @@
             </section>
 
             @auth
-            <a class="btn btn-xs btn-round btn-success" href="{{ route('home') }}" target="_blank">Dashboard</a>
+            <a class="btn btn-xs btn-round btn-success" href="{{ route('home') }}"
+                target="_blank">{{ $setting->menu ?? 'Dashboard' }}</a>
             @else
             <a class="btn btn-xs btn-round btn-success" href="{{ route('login') }}">Login</a>
             @endauth
@@ -67,7 +70,7 @@
 
                 <div class="col-6 col-lg-3">
                     <a href="{{ route('welcome') }}">
-                        <h5>LaraBlog</h5>
+                        <h5>{{ $setting->name ?? 'LaraBlog'}}</h5>
                         {{-- <img src="{{ asset('frontend/img/logo-dark.png') }}" alt="logo"> --}}
                     </a>
                 </div>

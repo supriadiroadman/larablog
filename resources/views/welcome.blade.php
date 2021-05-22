@@ -5,6 +5,10 @@ Welcome
 @endsection
 
 @section('header')
+@php
+$setting = App\Models\Setting::first();
+@endphp
+
 
 <header class="header text-center text-white"
     style="background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);">
@@ -13,8 +17,9 @@ Welcome
         <div class="row">
             <div class="col-md-8 mx-auto">
 
-                <h1>Latest Blog Posts</h1>
-                <p class="lead-2 opacity-90 mt-6">Read and get updated on how we progress</p>
+                <h1>{{ $setting->title ?? 'Latest Blog Posts' }}</h1>
+                <p class="lead-2 opacity-90 mt-6">{{ $setting->subtitle ?? 'Read and get updated on how we progress' }}
+                </p>
 
             </div>
         </div>
@@ -99,7 +104,8 @@ Welcome
                         <form class="input-group" action="{{ route('welcome') }}" method="GET">
                             <input type="text" class="form-control" name="search"
                                 value="{{ request()->query('search') }}" placeholder="Search">
-                            <div class="input-group-addon">
+                            <div class="input-group-addon" onClick="document.forms[0].submit();"
+                                style="cursor: pointer">
                                 <span class="input-group-text"><i class="ti-search"></i></span>
                             </div>
                         </form>

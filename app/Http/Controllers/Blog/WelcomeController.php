@@ -15,9 +15,10 @@ class WelcomeController extends Controller
         $search = request()->query('search');
 
         if ($search) {
-            $posts = Post::where('title', 'LIKE', "%{$search}%")->orWhere('content', 'LIKE', "%{$search}%")->paginate(8)->withQueryString();
+            $posts = Post::with(['user', 'category', 'tags'])
+                ->OrWhere('title', 'LIKE', "%{$search}%")->orWhere('content', 'LIKE', "%{$search}%")->paginate(8)->withQueryString();
         } else {
-            $posts = Post::paginate(8);
+            $posts = Post::with(['user', 'category', 'tags'])->paginate(8);
         }
 
         $categories = Category::all();

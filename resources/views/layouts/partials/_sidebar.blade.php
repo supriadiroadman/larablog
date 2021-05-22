@@ -135,6 +135,22 @@
             </div>
         </div>
     </li>
+
+    <li class="nav-item {{ isActiveRoute('settings*') }}">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true"
+            aria-controls="collapseSeven">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Setting</span>
+        </a>
+        <div id="collapseSeven" class="collapse {{isActiveRoute('settings*', 'show') }}" aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Menu Setting:</h6>
+                <a class="collapse-item {{isActiveRoute('settings.index')}}"
+                    href="{{ route('settings.index') }}">Index</a>
+            </div>
+        </div>
+    </li>
     @endif
     @endauth
 

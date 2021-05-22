@@ -15,6 +15,8 @@ use App\Http\Controllers\Blog\WelcomeController;
 use App\Http\Controllers\CommentController;
 use Intervention\Image\ImageManagerStatic as Image;
 use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\SettingController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,6 +58,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('profiles', ProfileController::class)->only('index', 'update');
     Route::resource('comments', CommentController::class)->only('index', 'destroy');
     Route::resource('replies', ReplyController::class)->only('index', 'destroy');
+    Route::resource('settings', SettingController::class)->only('index', 'edit', 'update');
 });
 
 // Filemanager
