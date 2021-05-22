@@ -12,6 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Blog\CommentReplyController;
 use App\Http\Controllers\Blog\PostCommentController;
 use App\Http\Controllers\Blog\WelcomeController;
+use App\Http\Controllers\CommentController;
 use Intervention\Image\ImageManagerStatic as Image;
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('users/{user}/make-admin', [UserController::class, 'makeAdmin'])->name('users.make-admin');
     Route::post('users/{user}/make-user', [UserController::class, 'makeUser'])->name('users.make-user');
     Route::resource('profiles', ProfileController::class)->only('index', 'update');
+    Route::resource('comments', CommentController::class)->only('index', 'destroy');
 });
 
 // Filemanager

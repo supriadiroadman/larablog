@@ -1,7 +1,8 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('welcome') }}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('welcome') }}"
+        target="_blank">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -99,6 +100,22 @@
                 <h6 class="collapse-header">Menu Users:</h6>
                 <a class="collapse-item {{isActiveRoute('users.index')}}" href="{{ route('users.index') }}">Index</a>
                 <a class="collapse-item {{isActiveRoute('users.create')}}" href="{{ route('users.create') }}">Create</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item {{ isActiveRoute('comments*') }}">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true"
+            aria-controls="collapseFive">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Comments</span>
+        </a>
+        <div id="collapseFive" class="collapse {{isActiveRoute('comments*', 'show') }}" aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Menu comments:</h6>
+                <a class="collapse-item {{isActiveRoute('comments.index')}}"
+                    href="{{ route('comments.index') }}">Index</a>
             </div>
         </div>
     </li>
