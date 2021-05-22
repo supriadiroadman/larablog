@@ -26,9 +26,9 @@ class ReplyController extends Controller
                 ->orWhereHas('user', function (Builder $query) use ($keyword) {
                     $query->where('name', 'LIKE', "%{$keyword}%");
                 })
-                ->paginate(3)->withQueryString();
+                ->paginate(10)->withQueryString();
         } else {
-            $replies = Reply::with('comment', 'user')->paginate(3);
+            $replies = Reply::with('comment', 'user')->paginate(10);
         }
         // $replies->appends(['keyword' => $keyword]); // Cara ke 1 selain withQueryString()
         return view('replies.index', compact('replies'));

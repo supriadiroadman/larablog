@@ -116,17 +116,31 @@ $setting = App\Models\Setting::first();
                         <div class="row link-color-default fs-14 lh-24">
                             @foreach ($categories as $category)
 
-                            <div class="col-6">
+                            <div class="col-md-12">
                                 <a href="{{ route('blog.category', $category) }}">
                                     {{ $category->name }}
+                                    <span
+                                        class="badge badge-primary rounded-sm float-right">{{ $category->posts->count() }}</span>
                                 </a>
                             </div>
                             @endforeach
                         </div>
 
-                        <hr>
+                        {{-- <div class="row link-color-default fs-14 lh-24">
+                            @foreach ($categories as $category)
 
-                        {{-- <h6 class="sidebar-title">Top posts</h6>
+                            <div class="col-6">
+                                <a href="{{ route('blog.category', $category) }}">
+                        {{ $category->name }}
+                        <span>{{ $category->posts->count() }}</span>
+                        </a>
+                    </div>
+                    @endforeach
+                </div> --}}
+
+                <hr>
+
+                {{-- <h6 class="sidebar-title">Top posts</h6>
                         <a class="media text-default align-items-center mb-5" href="blog-single.html">
                             <img class="rounded w-65px mr-4" src="../assets/img/thumb/4.jpg">
                             <p class="media-body small-2 lh-4 mb-0">Thank to Maryam for joining our team</p>
@@ -147,26 +161,26 @@ $setting = App\Models\Setting::first();
                             <p class="media-body small-2 lh-4 mb-0">Top 5 brilliant content marketing strategies</p>
                         </a> --}}
 
-                        <hr>
+                <hr>
 
-                        <h6 class="sidebar-title">Tags</h6>
-                        <div class="gap-multiline-items-1">
+                <h6 class="sidebar-title">Tags</h6>
+                <div class="gap-multiline-items-1">
 
-                            @foreach ($tags as $tag)
-                            <a class="badge badge-secondary" href="{{ route('blog.tag', $tag) }}">
-                                {{$tag->name}}
-                            </a>
-                            @endforeach
+                    @foreach ($tags as $tag)
+                    <a class="badge badge-secondary" href="{{ route('blog.tag', $tag) }}">
+                        {{$tag->name}}
+                    </a>
+                    @endforeach
 
-                        </div>
-
-                        <hr>
-
-                    </div>
                 </div>
+
+                <hr>
 
             </div>
         </div>
+
+    </div>
+    </div>
     </div>
 </main>
 

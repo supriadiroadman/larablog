@@ -26,9 +26,9 @@ class CommentController extends Controller
                 ->orWhereHas('user', function (Builder $query) use ($keyword) {
                     $query->where('name', 'LIKE', "%{$keyword}%");
                 })
-                ->paginate(3)->withQueryString();
+                ->paginate(10)->withQueryString();
         } else {
-            $comments = Comment::with('post', 'user')->paginate(3);
+            $comments = Comment::with('post', 'user')->paginate(10);
         }
         // $comments->appends(['keyword' => $keyword]); // Cara ke 1 selain withQueryString()
         return view('comments.index', compact('comments'));

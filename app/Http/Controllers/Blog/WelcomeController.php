@@ -16,12 +16,12 @@ class WelcomeController extends Controller
 
         if ($search) {
             $posts = Post::with(['user', 'category', 'tags'])
-                ->OrWhere('title', 'LIKE', "%{$search}%")->orWhere('content', 'LIKE', "%{$search}%")->paginate(8)->withQueryString();
+                ->OrWhere('title', 'LIKE', "%{$search}%")->orWhere('content', 'LIKE', "%{$search}%")->paginate(6)->withQueryString();
         } else {
-            $posts = Post::with(['user', 'category', 'tags'])->paginate(8);
+            $posts = Post::with(['user', 'category', 'tags'])->paginate(6);
         }
 
-        $categories = Category::all();
+        $categories = Category::with('posts')->get();
         $tags = Tag::all();
         return view('welcome', compact('categories', 'tags', 'posts'));
     }

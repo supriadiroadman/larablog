@@ -21,7 +21,7 @@ class BlogPostController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        $posts = $category->posts()->paginate(8);
+        $posts = $category->posts()->paginate(6);
         return view('welcome', compact('categories', 'tags', 'posts'));
     }
 
@@ -29,7 +29,7 @@ class BlogPostController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        $posts = $tag->posts()->paginate(8);
+        $posts = $tag->posts()->paginate(6);
         return view('welcome', compact('categories', 'tags', 'posts'));
     }
 
@@ -37,7 +37,7 @@ class BlogPostController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        $posts = $user->posts()->paginate(8);
+        $posts = $user->posts()->paginate(6);
         return view('welcome', compact('categories', 'tags', 'posts'));
     }
 }
