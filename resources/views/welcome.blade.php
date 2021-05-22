@@ -17,7 +17,20 @@ $setting = App\Models\Setting::first();
         <div class="row">
             <div class="col-md-8 mx-auto">
 
-                <h1>{{ $setting->title ?? 'Latest Blog Posts' }}</h1>
+                {{-- <h1>{{ $setting->title ?? 'Latest Blog Posts' }}</h1> --}}
+                <h1>
+                    @if (isset($category))
+                    {{ $category->name }}
+                    @elseif (isset($tag))
+                    {{ $tag->name }}
+                    @elseif (isset($user))
+                    {{ $user->name }}
+                    @elseif (request()->query('search'))
+                    {{ request()->query('search') }}
+                    @else
+                    {{ $setting->title }}
+                    @endif
+                </h1>
                 <p class="lead-2 opacity-90 mt-6">{{ $setting->subtitle ?? 'Read and get updated on how we progress' }}
                 </p>
 
@@ -81,7 +94,8 @@ $setting = App\Models\Setting::first();
                         </div>
                         @empty
                         <h4>
-                            No results for <strong>'{{ request()->query('search') }}'</strong>
+                            No results for
+                            <strong>'{{ request()->query('search') ?? $category->name ?? $tag->name}}'</strong>
                         </h4>
                         @endforelse
 

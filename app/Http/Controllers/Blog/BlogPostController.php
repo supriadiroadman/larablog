@@ -22,7 +22,7 @@ class BlogPostController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         $posts = $category->posts()->paginate(6);
-        return view('welcome', compact('categories', 'tags', 'posts'));
+        return view('welcome', compact('categories', 'tags', 'posts', 'category'));
     }
 
     public function tag(Tag $tag)
@@ -30,7 +30,7 @@ class BlogPostController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         $posts = $tag->posts()->paginate(6);
-        return view('welcome', compact('categories', 'tags', 'posts'));
+        return view('welcome', compact('categories', 'tags', 'posts', 'tag'));
     }
 
     public function author(User $user)
@@ -38,6 +38,6 @@ class BlogPostController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         $posts = $user->posts()->paginate(6);
-        return view('welcome', compact('categories', 'tags', 'posts'));
+        return view('welcome', compact('categories', 'tags', 'posts', 'user'));
     }
 }
