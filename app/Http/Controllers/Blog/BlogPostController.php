@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 
-class PostController extends Controller
+class BlogPostController extends Controller
 {
     public function show(Post $post)
     {
