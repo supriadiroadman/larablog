@@ -63,11 +63,11 @@ class PostController extends Controller
             $filename = $slug . '-' . time() . '.' . $ext;
 
             // Store image
-            $file->storeAs('public/posts', $filename);
+            // $file->storeAs('public/posts', $filename);
 
             // Resize image
             $path = public_path('storage/posts/' . $filename);
-            $img = Image::make($path)->resize(1024, null, function ($constraint) {
+            $img = Image::make($file)->resize(1024, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $img->save($path);
@@ -133,11 +133,11 @@ class PostController extends Controller
             $filename = $slug . '-' . time() . '.' . $ext;
 
             // Store image
-            $file->storeAs('public/posts', $filename);
+            // $file->storeAs('public/posts', $filename);
 
             // Resize image
             $path = public_path('storage/posts/' . $filename);
-            $img = Image::make($path)->resize(1024, null, function ($constraint) {
+            $img = Image::make($file)->resize(1024, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $img->save($path);
